@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { login } from "./handler/login.js";
 import { connectDB } from "./db.js";
+import { getCard } from "./handler/getCard.js";
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/login", login);
+
+app.get("/get-cards", getCard);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

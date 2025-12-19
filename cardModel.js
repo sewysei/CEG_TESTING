@@ -8,21 +8,31 @@ const userSchema = new mongoose.Schema({
   },
   asam_kuat: {
     type: Number,
+    required: true,
+    default: 2,
   },
   asam_lemah: {
     type: Number,
+    required: true,
+    default: 2,
   },
   netral: {
     type: Number,
+    required: true,
+    default: 1,
   },
   asam_kuat: {
     type: Number,
+    required: true,
+    default: 2,
   },
-  asam_kuat: {
+  asam_lemah: {
     type: Number,
+    required: true,
+    default: 2,
   },
 });
 
-const User = mongoose.model("user", userSchema);
+const Card = mongoose.model("card", userSchema);
 
-export default User;
+export default Cards;

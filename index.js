@@ -1,10 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import { login } from "./handler/login.js";
+import { connectDB } from "./db.js";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
+
+await connectDB();
 
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -13,3 +16,5 @@ app.get("/", (req, res) => {
 });
 
 app.post("/login", login);
+
+module.exports = app;

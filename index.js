@@ -9,6 +9,8 @@ app.use(express.json());
 
 await connectDB();
 
+const PORT = process.env.PORT || 5000;
+
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Server is running",
@@ -17,4 +19,6 @@ app.get("/", (req, res) => {
 
 app.post("/login", login);
 
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});

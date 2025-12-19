@@ -14,11 +14,21 @@ export const login = async (req, res) => {
       });
     }
 
+    const payload = {
+      id: user._id,
+      nama: user.nama,
+    };
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
     res.status(200).json({
       message: "Login successful.",
-      user: {
+      data: {
         id: user._id,
         nama: user.nama,
+        token: token,
       },
     });
   } catch (error) {
